@@ -729,9 +729,9 @@ elif page == "Data":
         "Key insights",
         """
         <ul>
-            <li>Elder-targeted paraphrasing meaningfully shifted language toward terms like Medicare, benefits, and security</li>
-            <li>SpamAssassin analysis surfaced common domain impersonation patterns, including subtle misspellings</li>
-            <li>Across sources, we identified 23 distinct elder-specific scam patterns spanning healthcare, romance, prescription offers, and more</li>
+            <li>Elder-targeted paraphrasing meaningfully shifted language toward terms like Medicare, benefits, and security (Nazario phishing dataset)</li>
+            <li>SpamAssassin analysis surfaced common domain impersonation patterns, including subtle misspellings (SpamAssassin dataset)</li>
+            <li>Across sources, we identified 23 distinct elder-specific scam patterns spanning healthcare, romance, prescription offers, and more (AARP + FBI IC3 datasets)</li>
         </ul>
         """
     )
