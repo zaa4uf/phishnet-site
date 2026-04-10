@@ -421,7 +421,12 @@ div[role="radiogroup"] label p {
         box-shadow: 0 10px 28px rgba(17,24,39,0.08);
     }
 
+    /* NAV TEXT FIX */
     div[role="radiogroup"] label {
+        color: var(--light-text) !important;
+    }
+
+    div[role="radiogroup"] label p {
         color: var(--light-text) !important;
     }
 
@@ -430,13 +435,16 @@ div[role="radiogroup"] label p {
         color: var(--light-accent) !important;
     }
 
+    /* ACTIVE TAB (underline + contrast) */
     div[role="radiogroup"] label:has(input:checked) {
         background: rgba(14,165,164,0.08);
         color: var(--light-accent) !important;
         border-color: rgba(14,165,164,0.20);
         border-bottom: 2px solid var(--light-accent);
+        font-weight: 700;
     }
 
+    /* CARD + SURFACE FIX */
     .hero-logo-card,
     .content-card,
     .team-card,
@@ -447,6 +455,7 @@ div[role="radiogroup"] label p {
         box-shadow: 0 12px 28px rgba(17,24,39,0.08);
     }
 
+    /* TEXT FIXES */
     .hero-tagline,
     .section-body,
     .card-body,
@@ -474,6 +483,18 @@ div[role="radiogroup"] label p {
         color: var(--light-accent);
     }
 
+    /* BULLETS + LIST READABILITY FIX */
+    .card-body,
+    .card-body ul,
+    .card-body li {
+        color: var(--light-muted) !important;
+    }
+
+    .card-body li::marker {
+        color: var(--light-text);
+    }
+
+    /* LINKS */
     .linkedin-link {
         background: rgba(17,24,39,0.04);
         border: 1px solid var(--light-line);
@@ -495,7 +516,10 @@ div[role="radiogroup"] label p {
         color: var(--light-accent);
     }
 
-    .arch-img img, .method-img img, .data-img img {
+    /* IMAGES */
+    .arch-img img,
+    .method-img img,
+    .data-img img {
         border: 1px solid var(--light-line);
         box-shadow: 0 12px 28px rgba(17,24,39,0.08);
     }
