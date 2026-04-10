@@ -12,6 +12,7 @@ st.set_page_config(
 # CONFIG
 # -----------------------------
 GITHUB_URL = "https://github.com/ameyer135/ds-210-2026-spring-scam-ham"
+DEMO_VIDEO_URL = "https://www.youtube.com/watch?v=iMht94dYnFI"
 
 NAV_ITEMS = [
     "Home",
@@ -89,13 +90,17 @@ st.markdown("""
     --text: #F6F8FB;
     --muted: #C9D5E3;
     --line: rgba(255,255,255,0.08);
+    --light-text: #1F2937;
+    --light-muted: #4B5563;
+    --light-line: rgba(17,24,39,0.10);
+    --light-accent: #0EA5A4;
 }
 
 html, body, [data-testid="stAppViewContainer"] {
     background:
-        radial-gradient(circle at 15% 18%, rgba(130, 218, 203, 0.16), transparent 28%),
-        radial-gradient(circle at 84% 18%, rgba(95, 132, 174, 0.22), transparent 30%),
-        radial-gradient(circle at 50% 88%, rgba(130, 218, 203, 0.10), transparent 28%),
+        radial-gradient(circle at 15% 18%, rgba(130, 218, 203, 0.08), transparent 35%),
+        radial-gradient(circle at 84% 18%, rgba(95, 132, 174, 0.10), transparent 40%),
+        radial-gradient(circle at 50% 88%, rgba(130, 218, 203, 0.06), transparent 35%),
         linear-gradient(160deg, var(--navy-1) 0%, var(--navy-2) 48%, var(--navy-3) 100%);
     color: var(--text);
 }
@@ -154,7 +159,7 @@ div[role="radiogroup"] label {
     border-radius: 999px;
     padding: 0.55rem 0.95rem;
     margin: 0 !important;
-    color: var(--text) !important;
+    color: #FFFFFF !important;
     font-weight: 600;
     transition: all 0.18s ease;
 }
@@ -168,6 +173,7 @@ div[role="radiogroup"] label:has(input:checked) {
     background: rgba(130, 218, 203, 0.16);
     color: var(--aqua) !important;
     border-color: rgba(130, 218, 203, 0.24);
+    border-bottom: 2px solid var(--aqua);
 }
 
 div[role="radiogroup"] label p {
@@ -307,7 +313,7 @@ div[role="radiogroup"] label p {
     box-shadow: 0 16px 32px rgba(0,0,0,0.12);
 }
 
-.arch-img img, .method-img img {
+.arch-img img, .method-img img, .data-img img {
     border-radius: 20px;
     border: 1px solid var(--line);
     box-shadow: 0 20px 36px rgba(0,0,0,0.18);
@@ -402,6 +408,99 @@ div[role="radiogroup"] label p {
     background: rgba(130, 218, 203, 0.12);
 }
 
+/* light mode support */
+@media (prefers-color-scheme: light) {
+    html, body, [data-testid="stAppViewContainer"] {
+        background: #FFFFFF;
+        color: var(--light-text);
+    }
+
+    .nav-shell {
+        background: rgba(255,255,255,0.92);
+        border: 1px solid var(--light-line);
+        box-shadow: 0 10px 28px rgba(17,24,39,0.08);
+    }
+
+    div[role="radiogroup"] label {
+        color: var(--light-text) !important;
+    }
+
+    div[role="radiogroup"] label:hover {
+        background: rgba(17,24,39,0.04);
+        color: var(--light-accent) !important;
+    }
+
+    div[role="radiogroup"] label:has(input:checked) {
+        background: rgba(14,165,164,0.08);
+        color: var(--light-accent) !important;
+        border-color: rgba(14,165,164,0.20);
+        border-bottom: 2px solid var(--light-accent);
+    }
+
+    .hero-logo-card,
+    .content-card,
+    .team-card,
+    .github-box,
+    [data-testid="metric-container"] {
+        background: rgba(255,255,255,0.88);
+        border: 1px solid var(--light-line);
+        box-shadow: 0 12px 28px rgba(17,24,39,0.08);
+    }
+
+    .hero-tagline,
+    .section-body,
+    .card-body,
+    .hero-footer {
+        color: var(--light-muted);
+    }
+
+    .hero-body {
+        color: #111827;
+    }
+
+    .section-eyebrow {
+        color: var(--light-accent);
+    }
+
+    .hero-title,
+    .section-title,
+    .card-title,
+    .team-name,
+    .github-link {
+        color: var(--light-text);
+    }
+
+    .hero-title .accent {
+        color: var(--light-accent);
+    }
+
+    .linkedin-link {
+        background: rgba(17,24,39,0.04);
+        border: 1px solid var(--light-line);
+        color: var(--light-text);
+    }
+
+    .linkedin-link:hover {
+        background: rgba(14,165,164,0.10);
+        color: var(--light-accent);
+    }
+
+    .github-link {
+        background: rgba(17,24,39,0.04);
+        border: 1px solid var(--light-line);
+    }
+
+    .github-link:hover {
+        background: rgba(14,165,164,0.10);
+        color: var(--light-accent);
+    }
+
+    .arch-img img, .method-img img, .data-img img {
+        border: 1px solid var(--light-line);
+        box-shadow: 0 12px 28px rgba(17,24,39,0.08);
+    }
+}
+
 @media (max-width: 900px) {
     .hero-title {
         font-size: 3.2rem;
@@ -461,8 +560,7 @@ if page == "Home":
         st.markdown('<div class="hero-tagline">Clear. Real-time. Scam detection inside Gmail.</div>', unsafe_allow_html=True)
         st.markdown("""
         <div class="hero-body">
-            PhishNet is a Chrome extension that helps users identify phishing emails in real time.
-            Instead of relying on black-box spam filters, it explains why a message is risky and helps users make informed decisions with confidence.
+            PhishNet is a free Chrome extension for Gmail that helps users understand why an email is risky, not just whether it is. By surfacing interpretable signals and plain-language explanations, it helps older adults stay in control of their inbox instead of relying on black-box filters.
         </div>
         """, unsafe_allow_html=True)
         st.markdown('<div class="hero-footer">UC Berkeley MIDS Capstone • Spring 2026 Section 3</div>', unsafe_allow_html=True)
@@ -470,30 +568,93 @@ if page == "Home":
 
 elif page == "Motivation":
     st.markdown('<div class="section-wrap">', unsafe_allow_html=True)
-    section_eyebrow("Motivation")
-    section_title("Existing tools leave users guessing")
+    section_eyebrow("Problem")
+    section_title("A growing crisis hiding in plain sight")
     section_body(
-        "Email scams are becoming increasingly sophisticated, especially for older adults who face disproportionate financial and emotional harm."
+        "Older adults lose billions of dollars each year to phishing and email fraud, and the problem is accelerating. Reported losses for adults over 60 reached $2.4 billion in 2024, a four-fold increase since 2020, and the true figure is likely much higher because fraud is deeply underreported."
     )
 
     c1, c2 = st.columns(2, gap="large")
     with c1:
         render_card(
-            "Where current tools fail",
+            "Why this matters",
             """
             <ul>
-                <li>They provide binary classifications with no explanation</li>
-                <li>They rely on static patterns that fail on modern scams</li>
-                <li>They do not help users understand why something is risky</li>
+                <li>Scams create real mental and physical harm, not just financial loss</li>
+                <li>Older adults living alone or managing cognitive decline are especially vulnerable</li>
+                <li>Median losses are significantly higher than for younger groups</li>
             </ul>
             """
         )
     with c2:
         render_card(
-            "The transparency gap",
+            "Why this is underserved",
             """
-            Users are forced to rely on intuition at exactly the moment scams are most convincing.
-            PhishNet is built to close that gap with clear, plain-language guidance.
+            <ul>
+                <li>6 in 10 older adults say technology was not designed with them in mind</li>
+                <li>No widely available free tool exists to help them navigate their inbox safely</li>
+                <li>63.6M U.S. adults aged 55+ use Chrome on desktop or tablet</li>
+            </ul>
+            """
+        )
+
+    section_eyebrow("Transparency Gap")
+    section_title("Why existing tools fail")
+    section_body(
+        "Current solutions generally fall into three failure modes: they are too simple, too opaque, or too inaccessible. At the moment when scams are becoming hardest to distinguish from legitimate emails, users are left relying on intuition."
+    )
+
+    c3, c4 = st.columns(2, gap="large")
+    with c3:
+        render_card(
+            "Where tools fall short",
+            """
+            <ul>
+                <li>Binary classifiers give a label with no explanation</li>
+                <li>Black-box systems hide their reasoning entirely</li>
+                <li>Users cannot learn from or verify the model’s decision</li>
+            </ul>
+            """
+        )
+    with c4:
+        render_card(
+            "What that creates",
+            """
+            <ul>
+                <li>Dependency instead of confidence or literacy</li>
+                <li>No fallback when a scam slips through a filter</li>
+                <li>Enterprise-priced or reactive products that are not senior-specific</li>
+            </ul>
+            """
+        )
+
+    section_eyebrow("Solution")
+    section_title("Designed for clarity, not just detection")
+    section_body(
+        "PhishNet closes this gap by identifying scam patterns, surfacing interpretable risk signals, and keeping users in control of their own inbox. It is designed for two core personas: the independent older adult who wants protection without surveillance, and the trusted family member who wants peace of mind without being constantly on call."
+    )
+
+    c5, c6 = st.columns(2, gap="large")
+    with c5:
+        render_card(
+            "What users see",
+            """
+            <ul>
+                <li>Three risk tiers: safe, suspicious, dangerous</li>
+                <li>A sidebar widget that explains the signals behind the verdict</li>
+                <li>Psychological tactics surfaced in plain language, including authority, scarcity, and social proof</li>
+            </ul>
+            """
+        )
+    with c6:
+        render_card(
+            "Why it works",
+            """
+            <ul>
+                <li>Protection without removing user agency</li>
+                <li>One-click trusted contact support when needed</li>
+                <li>Privacy-first design with minimal data retention</li>
+            </ul>
             """
         )
     st.markdown('</div>', unsafe_allow_html=True)
@@ -503,21 +664,24 @@ elif page == "Demo":
     section_eyebrow("Demo")
     section_title("What the product experience looks like")
     section_body(
-        "PhishNet runs directly inside Gmail. Emails are labeled automatically, and opening a message shows the risk level and explanation."
+        "PhishNet runs directly inside Gmail. Emails are labeled automatically, and opening a message shows the risk level, explanation, and next-step options in real time."
     )
 
     demo_left, demo_right = st.columns([1.7, 1], gap="large")
     with demo_left:
-        st.video("https://www.youtube.com/watch?v=y5IShB9ihds&list=PLhMnuBfGeCDPtyC9kUf_hG_QwjYzZ0Am1")
+        st.video(DEMO_VIDEO_URL)
     with demo_right:
         render_card(
             "User workflow",
             """
             <ul>
-                <li>Email arrives in Gmail</li>
-                <li>PhishNet assigns a risk label</li>
-                <li>User opens the email and sees the explanation</li>
-                <li>User decides whether to trust, ignore, or escalate</li>
+                <li>Email arrives in Gmail and PhishNet checks whether the thread has already been scored</li>
+                <li>The extension assigns a risk tier: safe, suspicious, or dangerous</li>
+                <li>Opening the email reveals a sidebar with the explanation behind the decision</li>
+                <li>The Risk Analysis tab surfaces signals such as urgency, authority, impersonation, or suspicious requests</li>
+                <li>The Ask tab lets users ask follow-up questions about the message in plain language</li>
+                <li>The Settings tab allows users to add a trusted contact and share a summary with one click</li>
+                <li>Users can choose whether to trust, ignore, escalate, or request additional help</li>
             </ul>
             """
         )
@@ -526,36 +690,27 @@ elif page == "Demo":
 elif page == "Data":
     st.markdown('<div class="section-wrap">', unsafe_allow_html=True)
     section_eyebrow("Data")
-    section_title("Grounded in real scam patterns")
+    section_title("Grounded in real scams and elder-specific behavior")
     section_body(
-        "PhishNet combines retrieval-based context with structured storage so the system can generalize beyond simple keywords."
+        "A core challenge was the lack of elder-specific phishing datasets. To address this, we combined real phishing corpora, balanced ham/spam data, synthetic augmentation, and a live knowledge base of trusted scam reports."
     )
 
-    c1, c2 = st.columns(2, gap="large")
-    with c1:
-        render_card(
-            "Retrieval and grounding",
-            """
-            <ul>
-                <li>AARP scam content is stored in S3</li>
-                <li>Documents are embedded into a vector store</li>
-                <li>Relevant context is retrieved during scoring</li>
-                <li>This improves generalization beyond static keywords</li>
-            </ul>
-            """
-        )
-    with c2:
-        render_card(
-            "State and synchronization",
-            """
-            <ul>
-                <li>DynamoDB stores scores, reasons, and user settings</li>
-                <li>Gmail labels reflect risk status directly in the inbox</li>
-                <li>Pub/Sub notifications keep incoming messages in sync</li>
-                <li>The system stays current as new emails arrive</li>
-            </ul>
-            """
-        )
+    st.markdown('<div class="data-img">', unsafe_allow_html=True)
+    st.image("assets/datasets.png", width=1120)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
+
+    render_card(
+        "Key insights",
+        """
+        <ul>
+            <li>Elder-targeted paraphrasing meaningfully shifted language toward terms like Medicare, benefits, and security</li>
+            <li>SpamAssassin analysis surfaced common domain impersonation patterns, including subtle misspellings</li>
+            <li>Across sources, we identified 23 distinct elder-specific scam patterns spanning healthcare, romance, prescription offers, and more</li>
+        </ul>
+        """
+    )
     st.markdown('</div>', unsafe_allow_html=True)
 
 elif page == "Architecture":
@@ -563,7 +718,7 @@ elif page == "Architecture":
     section_eyebrow("Architecture")
     section_title("End-to-end system for real-time scam detection")
     section_body(
-        "PhishNet is built as a lightweight Chrome extension backed by a scalable cloud pipeline for scoring and explanation."
+        "PhishNet combines a Gmail-native Chrome extension with a cloud-based inference system that is optimized for speed, interpretability, and continuous improvement."
     )
 
     c1 = st.columns(1)[0]
@@ -572,10 +727,10 @@ elif page == "Architecture":
             "System overview",
             """
             <ul>
-                <li>Chrome extension reads Gmail threads in real time</li>
-                <li>Requests are sent to a FastAPI backend on AWS App Runner</li>
-                <li>Backend scores emails using Amazon Bedrock</li>
-                <li>Results are returned to the Gmail UI in real time</li>
+                <li>The Chrome extension checks for untagged Gmail threads when new mail arrives or Gmail is opened</li>
+                <li>Events route through a GCP Pub/Sub layer and trigger a FastAPI backend on AWS App Runner</li>
+                <li>Amazon Bedrock runs the classification pipeline with retrieval from a live knowledge base</li>
+                <li>Results are written back to the Gmail UI in real time</li>
             </ul>
             """
         )
@@ -591,13 +746,14 @@ elif page == "Architecture":
     c2 = st.columns(1)[0]
     with c2:
         render_card(
-            "Application stack",
+            "Application stack and learning loop",
             """
             <ul>
-                <li>FastAPI service running on App Runner</li>
-                <li>Gmail labels and Pub/Sub notifications keep state synchronized</li>
-                <li>DynamoDB stores scores, reasons, and user settings</li>
-                <li>S3 stores supporting scam knowledge content</li>
+                <li>Two-stage scoring keeps latency and cost low: safe emails stop after initial classification, while suspicious and dangerous emails receive full explanation generation</li>
+                <li>DynamoDB stores scores, settings, feedback, and structured outputs</li>
+                <li>S3 stores vectorized AARP and IC3 source material for the knowledge base</li>
+                <li>A weekly scraper updates trusted scam content and incrementally refreshes the vector store</li>
+                <li>Thumbs-down user feedback becomes labeled evaluation data used to improve prompts, retrieval quality, and explanation fidelity</li>
             </ul>
             """
         )
@@ -616,7 +772,7 @@ elif page == "Methodology":
     section_title("How the modeling approach evolved")
 
     section_body(
-        "We evaluated a progression of approaches, starting with traditional feature-based models, then moving to full-email LLM classification, and finally to a retrieval-augmented framework grounded in known scam examples. The image below summarizes that progression and the tradeoffs that led us to the final approach."
+        "We evaluated a progression of approaches, from traditional ML on semantic features to full-email LLM classification and finally to a retrieval-augmented framework grounded in live scam reports. The goal was not just high binary accuracy, but a system that stays current, explains itself clearly, and performs well for older-adult-facing use cases."
     )
 
     st.markdown('<div class="method-img">', unsafe_allow_html=True)
@@ -626,7 +782,11 @@ elif page == "Methodology":
     st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
 
     section_body(
-        "We evaluated GPT-4o-mini, Claude Haiku, Nova Lite, and Nova Pro using a two-step pipeline on ~800–1,000 emails. Nova Pro performed best, achieving 96% accuracy and 100% phishing recall with few-shot examples and retrieval of the top 3 similar scams. These metrics validate classification performance, but not whether our risk tiers are appropriate or explanations are clear to older adults. To address this, we supplemented with manual review and LLM-as-a-judge evaluation."
+        "Traditional ML reached about 85% accuracy but struggled with legitimate-email precision. Fine-tuned LLMs improved accuracy to 93% by using full email bodies, but required retraining as scams evolved. RAG delivered the strongest balance of adaptability and performance by grounding classification in a live, updatable knowledge base."
+    )
+
+    section_body(
+        "We benchmarked GPT-4o-mini, Claude Haiku, Nova Lite, and Nova Pro in a two-step pipeline. Nova Pro performed best, achieving 96% overall accuracy and 100% phishing recall with few-shot examples and retrieval of the top three similar scams. Because binary metrics alone do not capture whether risk tiers and explanations are truly usable, we also layered in manual review and LLM-as-a-judge evaluation."
     )
 
     st.markdown('<div class="method-img">', unsafe_allow_html=True)
@@ -641,6 +801,17 @@ elif page == "Methodology":
         st.metric("Phishing Recall", "100%")
     with m3:
         st.metric("Selected Stack", "Nova Pro")
+
+    render_card(
+        "Evaluation beyond accuracy",
+        """
+        <ul>
+            <li>Manual review assessed whether risk tiers and explanations were appropriate for older adults</li>
+            <li>LLM-as-a-judge scoring measured phishing tier quality, explanation quality, faithfulness, relevance, and coherence</li>
+            <li>Nova Pro achieved strong explanation quality while remaining succinct and consistent with the label</li>
+        </ul>
+        """
+    )
 
 elif page == "About Us":
     st.markdown('<div class="section-wrap">', unsafe_allow_html=True)
